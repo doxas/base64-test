@@ -17,6 +17,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const parsed = JSON.parse(json);
             const img = new Image();
+
+            img.addEventListener('load', () => {
+                const url = B64.toDataURLFromImage(img);
+                const img2 = new Image();
+                img2.src = url;
+                document.body.appendChild(img2);
+            }, false);
+
             img.src = parsed.dataURL;
             document.body.appendChild(img);
         });

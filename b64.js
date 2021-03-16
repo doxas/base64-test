@@ -10,5 +10,12 @@ export class B64 {
         });
     }
 
-    static toDataURLFromImage(img){}
+    static toDataURLFromImage(img){
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        ctx.drawImage(img, 0, 0);
+        return canvas.toDataURL();
+    }
 }
