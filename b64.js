@@ -4,6 +4,7 @@
  */
 export class B64 {
     /**
+     * @static
      * @param {HTMLImageElement} image
      * return {string}
      */
@@ -16,19 +17,21 @@ export class B64 {
         return canvas.toDataURL();
     }
     /**
+     * @static
      * @param {File} file
      * return {Promsise}
      */
     static toDataURLFromFile(file){
         return new Promise((resolve) => {
             const reader = new FileReader();
-            reader.addEventListener('load', (evt) => {
-                resolve(evt.target.result);
+            reader.addEventListener('load', () => {
+                resolve(reader.result);
             });
             reader.readAsDataURL(file);
         });
     }
     /**
+     * @static
      * @param {string} path
      * return {Promise}
      */
